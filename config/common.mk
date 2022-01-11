@@ -45,6 +45,7 @@ PRODUCT_COPY_FILES += \
     vendor/omni/prebuilt/bin/clean_cache.sh:system/bin/clean_cache.sh
 
 # Backup Tool
+ifeq ($(INCLUDE_BACKUPTOOL),true)
 ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_COPY_FILES += \
     vendor/omni/prebuilt/common/bin/backuptool_ab.sh:system/bin/backuptool_ab.sh \
@@ -56,9 +57,9 @@ PRODUCT_COPY_FILES += \
 endif
 else
 PRODUCT_COPY_FILES += \
-    vendor/omni/prebuilt/bin/backuptool.sh:system/bin/backuptool.sh \
-    vendor/omni/prebuilt/bin/backuptool.functions:system/bin/backuptool.functions \
-    vendor/omni/prebuilt/bin/blacklist:system/addon.d/blacklist
+    vendor/omni/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/omni/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions
+endif
 endif
 
 # Backup Services whitelist
